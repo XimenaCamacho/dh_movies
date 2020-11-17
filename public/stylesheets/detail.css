@@ -1,0 +1,58 @@
+.detail_main_container {
+    display: flex;
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+    background-color: rgba(17, 17, 17, 0.87);
+    border: 1px solid rgb(179, 2, 2);
+}
+.detail_section_container {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 25px;
+}
+.detail_section_container h2 {
+    color: rgb(226, 226, 226);
+    margin: 25px;
+    letter-spacing: 5px;
+    font-size: 30px;
+}
+.detail_article_container div {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 5%;
+}
+.detail_article_container h3 {
+    color: rgb(179, 2, 2);
+    font-size: 18px;
+    margin: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.detail_article_container p {
+    color: rgb(226, 226, 226);
+    font-size: 18px;
+    margin: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.detail_buttons {
+    display: flex;
+    float: right;
+    margin: 40px 40px 25px 0px;
+}
+.detail_buttons button {
+    border: none;
+    color: rgb(226, 226, 226);
+    background-color: rgb(179, 2, 2);
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 7px 30px;
+    margin-left: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.detail_buttons button:hover {
+    background-color: rgb(78, 78, 78);
+}

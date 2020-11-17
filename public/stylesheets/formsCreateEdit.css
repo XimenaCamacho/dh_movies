@@ -1,0 +1,74 @@
+.form_main_container {
+    display: flex;
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+    background-color: rgba(17, 17, 17, 0.87);
+    border: 1px solid rgb(179, 2, 2);
+}
+.form_section_container {
+    margin-bottom: 25px;
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+}
+.form_section_container h2 {
+    color: rgb(226, 226, 226);
+    margin-bottom: 20px;
+    letter-spacing: 5px;
+    font-size: 30px;
+}
+.form_article_container {
+    width: 100%;
+    justify-content: center;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.form_article_container label {
+    color: rgb(226, 226, 226);
+    font-size: 18px;
+    margin: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.form_article_container input {
+    width: 90%;
+    height: 28px;
+    border: 2px solid rgb(179, 2, 2);
+    margin: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: rgb(226, 226, 226); 
+}
+.form_article_container select {
+    width: 90%;
+    height: 35px;
+    border: 2px solid rgb(179, 2, 2);
+    margin: 10px;
+    font-size: 15px;
+    font-weight: bold; 
+    background-color: rgb(226, 226, 226); 
+}
+.form_select_actor select {
+    height: 100px; 
+}
+.form_buttons {
+    margin: 15px 0px;
+}
+.form_buttons button {
+    border: none;
+    color: rgb(226, 226, 226);
+    background-color: rgb(179, 2, 2);
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 7px 30px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.form_buttons button:hover {
+    background-color: rgb(78, 78, 78);
+}

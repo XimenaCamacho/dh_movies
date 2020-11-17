@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/stylesheets/detail.css">
+</head>
+<body>
+<%- include('../partials/header') %> 
+<%- include('../partials/search') %> 
+  <main class="detail_main_container">
+    <section class="detail_section_container">
+      <h2>Detalle:</h2>
+      <article class="detail_article_container">
+        <div class="detail_order">
+          <h3>Titulo: </h3>
+          <p><%= detail.title %> </p>
+        </div>
+        <div class="detail_order">
+          <h3>Rating: </h3>
+          <p><%= detail.rating %></p>
+        </div>
+        <div class="detail_order">
+          <h3>Premios: </h3>
+          <p><%= detail.awards %></p>
+        </div>
+        <div class="detail_order">
+          <h3>Duración:</h3>
+          <p><%= detail.length %> minutos</p>
+        </div>
+        <div class="detail_order">
+          <h3>Fecha de estreno:</h3>
+          <p><%= detail.release_date %></p>
+        </div>
+        <div class="detail_order">
+          <h3>Genero: </h3>
+          <% if (detail.Genre == undefined) { %>
+            <p>-- </p>
+          <% } else { %>
+            <p><%= detail.Genre.name %> </p>
+          <% } %>
+        </div>
+        <div class="detail_actors">
+          <h3>Actores: </h3>
+          <% detail.actor.forEach(actor=> { %>
+            <p class="detail_actors_2"> - <%= actor.first_name %> <%= actor.last_name %> </p>
+          <% }) %>
+        </div>
+      </article>
+      <div class="detail_buttons">
+        <a href="/movies/edit/<%= detail.id %> "><button type="submit">Modificar</button></a>
+        <form action="/movies/delete/<%= detail.id %>?_method=DELETE" method="POST">
+          <button type="submit">Eliminar</button>
+        </form>
+      </div>
+    </section>
+  </main>
+<%- include('../partials/footer') %>

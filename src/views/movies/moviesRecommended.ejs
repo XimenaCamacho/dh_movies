@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/stylesheets/listStyle.css">
+</head>
+<body>
+<%- include('../partials/header') %> 
+<%- include('../partials/search') %> 
+<main class="list_main_container">
+    <section class="list_section_container">
+      <h2>Películas recomendadas:</h2>
+      <article class="list_article_container">
+        <% popular.forEach(onePopular => { %>
+            <ul>
+                <li><a href="/movies/detail/<%= onePopular.id %> "> - <%= onePopular.title %>  </a></li>
+            </ul>     
+        <% }) %>
+      </article>
+      <div class="return_button">
+        <a href="/">Volver al Home</a>
+      </div>
+    </section>
+</main>
+<%- include('../partials/footer') %> 

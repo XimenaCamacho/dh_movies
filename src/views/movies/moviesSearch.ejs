@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/stylesheets/search.css">
+</head>
+<body>
+<%- include('../partials/header') %> 
+<%- include('../partials/search') %> 
+  <main class="search_main_container">
+    <section class="search_section_container">
+      <h3>Resultados de búsqueda:</h3>
+        <article class="search_article_container">
+          <% if (contenido==1) { %>
+            <h2>No se han encontrado resultados</h2>
+          <% } else { %>
+           <% if (resultSearch != 0) { %>
+            <article class="search_article_container">
+              <% resultSearch.forEach(result => { %>
+                <ul>
+                  <li><a href="/movies/detail/<%= result.id %>"> <%= result.title %>  </a></li>
+                </ul>                 
+                <% }) %>
+                <% } else { %>
+                  <h2>No se han encontrado resultados</h2> 
+                <% } %>
+          <% } %>
+        </article>
+        <div class="return_button">
+          <a href="/">Volver al Home</a>
+        </div>
+    </section>
+  </main>
+<%- include('../partials/footer') %>

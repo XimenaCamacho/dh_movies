@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/stylesheets/formsCreateEdit.css">
+</head>
+<body>
+<%- include('../partials/header') %> 
+<%- include('../partials/search') %> 
+  <main class="form_main_container">
+    <section class="form_section_container">
+      <h2>Crear película:</h2>
+      <article class="form_article_container">
+          <form action="/movies/create" method="POST">
+          <div>
+            <label for="">Titulo:</label>
+            <input type="text" name="title">
+          </div>
+          <div>
+            <label for="">Rating:</label>
+            <input type="text" name="rating">
+          </div>
+          <div>
+            <label for="">Premios:</label>
+            <input type="text" name="awards">
+          </div>
+          <div>
+            <label for="">Fecha de estreno:</label>
+            <input type="date" name="release_date">
+          </div>
+          <div>
+            <label for="">Duración:</label>
+            <input type="text" name="length">
+          </div>
+          <div>
+            <label for="">Género:</label>
+            <select name="genre_id" >
+              <% allGenres.forEach(genre => { %>
+                <option value="<%= genre.id %>"> <%= genre.name %> </option>
+              <% }) %>
+            </select>
+          </div>
+          <div class="form_select_actor">
+            <label for="">Actores:</label>
+            <select name="actor" multiple >
+            <% allActors.forEach(actor=> { %>
+              <option value="<%= actor.id %>">  <%= actor.first_name %> <%= actor.last_name %> </option>
+            <% }) %>
+            </select>
+          </div>
+          <div class="form_buttons">
+            <button type="submit">Crear película</button>
+          </div>
+        </form>
+      </article>
+    </section>
+  </main>
+<%- include('../partials/footer') %>

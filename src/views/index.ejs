@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include('partials/head') %>
+<link rel="stylesheet" href="/stylesheets/index.css">
+</head>
+<body>
+<%- include('partials/header') %> 
+<%- include('partials/search') %> 
+  <main class="main_index_container">
+    <section class="section_index_container">
+      <a href="./movies/list"><img src="./images/peliculas.svg" alt="Peliculas"></a>
+      <article class="article_index_container">
+        <a href="./movies/list"><h2>Películas</h2></a>
+        <div class="index_links">
+          <a href="./movies/list" >Todas las películas</a>
+          <a href="./movies/recommended" >Películas más vistas</a>
+          <a href="./movies/new" >Estrenos</a>
+        </div>
+      </article>
+    </section>
+    <section class="section_index_container">
+      <a href="/movies/new"><img src="./images/series.svg" alt="Series"> </a>
+      <article class="article_index_container">
+        <a href="#"><h2>Series</h2></a>
+        <div class="index_links">
+          <a href="#" >Todas las series</a>
+          <a href="#" >Series más vistas</a>
+          <a href="#" >Estrenos</a>
+        </div>
+        </article>
+    </section>
+  </main>
+<%- include('partials/footer') %>
