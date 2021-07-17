@@ -1,14 +1,14 @@
 const fs = require('fs');
 const path = require('path');
-const moment = require ('moment');
-const { Movie, Genre, Actor} = require('../database/models');
-const {Op} = require("sequelize");
+const moment = require('moment');
+const { Movie, Genre, Actor } = require('../database/models');
+const { Op } = require("sequelize");
 
 module.exports = {
     list: async (req, res) => {
         try {
             let allMovies = await Movie.findAll();
-            res.render('./movies/movies', {allMovies});
+            res.render('./movies/movies', { allMovies });
         } catch (error) {
             console.log(error);
         }
@@ -16,13 +16,13 @@ module.exports = {
     //logica detalle de pelicula
     detail: async (req, res) => {
         try {
-            let detail = await Movie.findByPk(req.params.id, {include: { all:true}})
+            let detail = await Movie.findByPk(req.params.id, { include: { all: true } })
             detail = detail.dataValues;
             detail.release_date = moment(detail.release_date).format('DD-MM-YYYY')
-            res.render('./movies/movieDetail', {detail})
+            res.render('./movies/movieDetail', { detail })
         } catch (error) {
             console.log(error);
-        }       
+        }
     },
     new: async (req, res) => {
         try {
@@ -32,7 +32,7 @@ module.exports = {
                 ],
                 limit: 5,
             });
-                 res.render('./movies/moviesNew', {premiere}) 
+            res.render('./movies/moviesNew', { premiere })
         } catch (error) {
             console.log(error);
         }
@@ -41,15 +41,15 @@ module.exports = {
         try {
             let popular = await Movie.findAll({
                 where: {
-                    rating: {[Op.gt]:8}
-               },
-               order: [
-                ['rating', 'DESC']
-            ]
+                    rating: { [Op.gt]: 8 }
+                },
+                order: [
+                    ['rating', 'DESC']
+                ]
             })
-            res.render('./movies/moviesRecommended', {popular})
+            res.render('./movies/moviesRecommended', { popular })
         } catch (error) {
-            console.log(error); 
+            console.log(error);
         }
     },
     result: async (req, res) => {
@@ -60,49 +60,46 @@ module.exports = {
             contenido = 1;
         }
         try {
-            const resultSearch = await Movie.findAll( {
+            const resultSearch = await Movie.findAll({
                 where: {
-                    title: {[Op.like]: req.body.search + "%" }
+                    title: { [Op.like]: req.body.search + "%" }
                 },
-                order : [
+                order: [
                     ['title', 'ASC']
                 ]
             });
-            console.log(contenido + "lo que llega en el body")
-            console.log(algo)
-            console.log(test + ' muestra de lo que hay dentro del value de resultSearch')
-            res.render('./movies/moviesSearch', {resultSearch, contenido});
-         } catch (error) {
-             console.log(error);
-         }
+            res.render('./movies/moviesSearch', { resultSearch, contenido });
+        } catch (error) {
+            console.log(error);
+        }
     },
     create: async (req, res) => {
         try {
             const allGenres = await Genre.findAll();
             const allActors = await Actor.findAll();
-            res.render('./movies/createMovie', {allGenres, allActors});
+            res.render('./movies/createMovie', { allGenres, allActors });
         } catch (error) {
             console.log(error);
         }
     },
     storageNew: async (req, res) => {
         try {
-            const NewMovie = await Movie.create(req.body) 
-                await NewMovie.addActor(req.body.actor);
+            const NewMovie = await Movie.create(req.body)
+            await NewMovie.addActor(req.body.actor);
             res.redirect('/movies/list')
         } catch (error) {
-           console.log(error); 
+            console.log(error);
         }
         console.log(req.body)
     },
     edit: async (req, res) => {
         try {
             let idMovie = req.params.id;
-            const editMovie = await Movie.findByPk (idMovie, {include:{ all:true}});
+            const editMovie = await Movie.findByPk(idMovie, { include: { all: true } });
             console.log(editMovie);
             const allGenres = await Genre.findAll();
             const allActors = await Actor.findAll();
-            res.render('./movies/editMovie', {editMovie, allGenres, allActors})
+            res.render('./movies/editMovie', { editMovie, allGenres, allActors })
         } catch (error) {
             console.log(error)
         }
@@ -110,7 +107,7 @@ module.exports = {
     update: async (req, res) => {
         try {
             let idMovie = req.params.id;
-            const updateMovie = await Movie.findByPk(idMovie, { include:{ all:true}});
+            const updateMovie = await Movie.findByPk(idMovie, { include: { all: true } });
             await updateMovie.removeActor(idMovie.actor);
             await updateMovie.addActor(req.body.actor);
             await updateMovie.update(req.body);
@@ -122,7 +119,7 @@ module.exports = {
     delete: async (req, res) => {
         try {
             let idMovie = req.params.id;
-            const deleteMovie = await Movie.findByPk(idMovie, {include:['Genre', 'actor']});
+            const deleteMovie = await Movie.findByPk(idMovie, { include: ['Genre', 'actor'] });
             await deleteMovie.removeActor(deleteMovie.actor);
             await deleteMovie.destroy();
             res.redirect('/movies/list');
